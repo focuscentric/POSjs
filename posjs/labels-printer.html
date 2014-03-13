@@ -1,0 +1,60 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HTML & CSS Avery Labels (5160)</title>
+    <style type="text/css">
+        body {
+            width: 8.5in;
+            margin: 0in .1875in;
+        }
+
+        .label {
+            /* Avery 5160 labels -- CSS and HTML by MM at Boulder Information Services */
+            width: 2.025in; /* plus .6 inches from padding */
+            height: .875in; /* plus .125 inches from padding */
+            padding: .125in .3in 0;
+            margin-right: .125in; /* the gutter */
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            /*outline: 1px dotted;  outline doesn't occupy space like border does */
+        }
+
+            .label table {
+                width: 100%;
+                height: 100%;
+                border: none;
+                padding: 0px;
+            }
+
+            .label img {
+                height: .350in;
+                vertical-align: middle;
+            }
+
+            .label .price {
+                font-size: 22pt;
+                font-weight: bold;
+            }
+
+            .label .code {
+                font-size: 10pt;
+            }
+
+        .page-break {
+            clear: left;
+            display: block;
+            page-break-after: always;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="label"><table><tr><td colspan="2"><img src="file://C:\Users\Dominic\Pictures\pealogo.png"  /></td></tr><tr><td><span class="code">1006</span></td><td><span class="price">34,95 $</span></td></tr></table></div><div class="label"><table><tr><td colspan="2"><img src="file://C:\Users\Dominic\Pictures\pealogo.png"  /></td></tr><tr><td><span class="code">1006</span></td><td><span class="price">34,95 $</span></td></tr></table></div><div class="label"><table><tr><td colspan="2"><img src="file://C:\Users\Dominic\Pictures\pealogo.png"  /></td></tr><tr><td><span class="code">1008</span></td><td><span class="price">50,00 $</span></td></tr></table></div><div class="label"><table><tr><td colspan="2"><img src="file://C:\Users\Dominic\Pictures\pealogo.png"  /></td></tr><tr><td><span class="code">1008</span></td><td><span class="price">50,00 $</span></td></tr></table></div><div class="label"><table><tr><td colspan="2"><img src="file://C:\Users\Dominic\Pictures\pealogo.png"  /></td></tr><tr><td><span class="code">def</span></td><td><span class="price">45,00 $</span></td></tr></table></div>
+
+    <script type="text/javascript">
+        setTimeout(function () { window.print(); }, 1234);
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<div class="page-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>
+                {{"titleReports" | localize}}
+                <small ng-hide="listMode">
+                    <a href="#" ng-click="showList();">
+                        {{"labelReturnToReports" | localize}}
+                    </a>
+                </small>
+            </h1>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <button class="btn btn-lg btn-primary" onclick="window.print();">
+                    <span class="glyphicon glyphicon-print"></span>
+                    {{"buttonPrint" | localize}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-show="listMode">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>{{"labelReportName" | localize}}</th>
+                    <th>{{"labelGenerate" | localize}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{"rptOutOfStock" | localize}}</td>
+                    <td><button class="btn btn-default" ng-click="renderBO();">{{"labelGenerate" | localize}}</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" ng-show="isViewing('bo')">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td colspan="2">{{"labelSearchMinOnHand" | localize}}</td>
+                    <td colspan="2"><input type="text" class="form-control" ng-model="backOrderAmount" /></td>
+                    <td>
+                        <button class="btn btn-default" ng-click="renderBO();">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{"labelSupplier" | localize}}</th>
+                    <th>{{"labelCode" | localize}}</th>
+                    <th>{{"labelName" | localize}}</th>
+                    <th>{{"labelPrice" | localize}}</th>
+                    <th>{{"labelOnHand" | localize}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in boProducts">
+                    <td>{{product.mnfCode}}</td>
+                    <td>{{product.code}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{price(product) | currency}}</td>
+                    <td>{{product.quantityOnHand}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

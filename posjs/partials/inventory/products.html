@@ -1,0 +1,116 @@
+﻿<div class="page-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{"titleProducts" | localize}}</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <button class="btn btn-lg btn-primary" ng-click="create();"><span class="glyphicon glyphicon-plus"></span> {{"buttonNewProduct" | localize}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td colspan="2">{{"labelSearchProduct" | localize}}</td>
+                    <td colspan="3"><input type="text" class="form-control" ng-model="searchText" /></td>
+                </tr>
+                <tr>
+                    <th>{{"labelCode" | localize}}</th>
+                    <th>{{"labelName" | localize}}</th>
+                    <th>{{"labelPrice" | localize}}</th>
+                    <th>{{"labelOnHand" | localize}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products | filter:searchText">
+                    <td>{{product.code}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{price(product) | currency}}</td>
+                    <td>{{product.quantityOnHand}}</td>
+                    <td><button ng-class='{ btn: true, "btn-default": (product != selectedProduct), "btn-success": (product == selectedProduct) }' ng-click="edit(product);">
+                        {{"buttonEdit" | localize}}
+                        </button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-5">
+        <div class="follow-scroll">
+            <h3 ng-hide="editMode">{{"titleAddAProduct" | localize}}</h3>
+            <h3 ng-show="editMode">{{"titleEditingProduct" | localize}} {{selectedProduct.code}}</h3>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label" for="name">{{"formProductName" | localize}}</label>
+                        <input ng-model="selectedProduct.name" data-focus-on="productName" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="code">{{"formProductCode" | localize}}</label>
+                        <input ng-model="selectedProduct.code" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="mnfCode">{{"formSupplier" | localize}}</label>
+                        <input ng-model="selectedProduct.mnfCode" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="cost">{{"formCost" | localize}}</label>
+                        <input ng-model="selectedProduct.cost" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="unitPrice">{{"formRetailPrice" | localize}}</label>
+                        <input ng-model="selectedProduct.unitPrice" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="discount">{{"formDiscountPct" | localize}}</label>
+                        <input ng-model="selectedProduct.discount" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="quantityOnHand">{{"labelOnHand" | localize}}</label>
+                        <input ng-model="selectedProduct.quantityOnHand" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary" ng-hide="editMode" ng-click="add();">
+                        {{"buttonAdd" | localize}}
+                    </button>
+                    <button class="btn btn-lg btn-primary" ng-show="editMode" ng-click="save();">
+                        {{"buttonSave" | localize}}
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-danger" ng-show="editMode" ng-click="remove();">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        {{"buttonDeleteProduct" | localize}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

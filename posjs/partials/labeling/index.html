@@ -1,0 +1,69 @@
+﻿<div class="page-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{"titlePrintLabel" | localize}}</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <button class="btn btn-lg btn-primary" ng-click="print();" ng-show="selection.length > 0">
+                    <span class="glyphicon glyphicon-print"></span> 
+                    {{"buttonPrint" | localize}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td colspan="2">{{"labelSearchProduct" | localize}}</td>
+                    <td colspan="3"><input type="text" class="form-control" ng-model="searchText" /></td>
+                </tr>
+                <tr>
+                    <th>{{"labelSupplier" | localize}}</th>
+                    <th>{{"labelCode" | localize}}</th>
+                    <th>{{"labelName" | localize}}</th>
+                    <th>{{"labelPrice" | localize}}</th>
+                    <th>{{"labelToPrint" | localize}}</th>
+                    <th>{{"labelAddedOn" | localize}}</th>
+                    <th>{{"labelWasPrinted" | localize}}</th>
+                    <th>
+                        <button ng-class='{ btn: true, "btn-default": !checkAll, "btn-success": checkAll }' ng-click="checkChanged();">
+                            <span ng-hide="checkAll" class="glyphicon glyphicon-plus-sign"></span>
+                            <span ng-show="checkAll" class="glyphicon glyphicon-check"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products | filter:searchText">
+                    <td>{{product.mnfCode}}</td>
+                    <td>{{product.code}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{price(product) | currency}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" ng-model="product.quantityOnHand" class="form-control input-sm" />
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{product.added | date}}</td>
+                    <td>
+                        <span class="glyphicon glyphicon-asterisk" ng-show="product.printed"></span>
+                    </td>
+                    <td>
+                        <button class="btn btn-default" ng-click="add(product._id);" ng-hide="inSelection(product._id);">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <button class="btn btn-success" ng-click="del(product._id);" ng-show="inSelection(product._id);">
+                            <span class="glyphicon glyphicon-check"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

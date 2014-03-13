@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Colors here ______________________________ */
+body {
+	color:#005B00;
+}
+a {
+	color:#DE4B8B;
+}
+a:hover {
+	color:#DE4B8B;
+}
+.invoice-table th, .invoice-table td, .invoice-amount-table td {
+	border-bottom-color: #005B00;
+}
+.invoice-table th {
+	background-color: #C30 !important;
+	color: #FFF;
+}
+.invoice-contact .contact-container .contact-title {
+	color: #005B00;
+}
+.invoice-table td.col-total, .invoice-amount-table tr td+td, .invoice-amount-table tr td+td.total {
+	background-color: #C8EC93;
+}
+.invoice-amount-table tr td.total, .invoice-amount-table tr td+td.total {
+	color: #148404;
+	background-color: #C8EC93;
+}
+.invoice-amount-table tr.end-separator td {
+	background-color: transparent;
+}
+/* ___________________________ End of Colors */

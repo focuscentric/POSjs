@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="posjs.app">
+<head>
+    <title>posjs v0.1 - alpha build</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css" />
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="posjs.HeaderCtrl">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" ng-show="store.logo">
+                    <img src="{{store.logo}}" height="30" />
+                </a>
+                <a class="navbar-brand" href="index.html" ng-hide="store.logo">
+                    <img src="assets/img/posjs.png" height="30" /> posjs
+                </a>
+</div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: menu == '' }"><a href="#">{{"menuHome" | localize}}</a></li>
+                    <li ng-class="{ active: menu == '/orders' }"><a href="#/orders">{{"menuInvoices" | localize}}</a></li>
+                    <li ng-class="{ active: menu == '/products' }"><a href="#/products">{{"menuInventory" | localize}}</a></li>
+                    <li ng-class="{ active: menu == '/reports' }"><a href="#/reports">{{"menuReports" | localize}}</a></li>
+                    <li ng-class="{ active: menu == '/labels' }"><a href="#/labels">{{"menuLabelling" | localize}}</a></li>
+                    <li ng-class="{ active: menu == '/settings' }"><a href="#/settings">{{"menuSettings" | localize}}</a></li>
+                    <!-- li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button onclick="location.href = '#/new-order'" class="btn btn-primary">{{"buttonNewInvoice" | localize}}</button></li>
+                    <li><button ng-click="lock();" class="btn btn-default">{{"buttonLock" | localize}}</button></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+    <div id="app-container" class="container" ng-view></div>
+    
+    <script type="text/javascript">
+        var posjs = posjs || {};
+    </script>
+
+    <!--
+    <script type="text/javascript" src="app.min.js"></script>
+    -->    
+    
+    <script type="text/javascript" src="data/inventory.js"></script>
+    <script type="text/javascript" src="data/orders.js"></script>
+    <script type="text/javascript" src="data/labelWriter.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/angular.js"></script>
+    <script type="text/javascript" src="lib/angular-route.js"></script>
+    <script type="text/javascript" src="lib/angular-locale_fr-ca.js"></script>
+
+    <script type="text/javascript" src="resources/default.js"></script>
+    <script type="text/javascript" src="resources/fr-ca.js"></script>
+    
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/localize.js"></script>
+    
+    <script type="text/javascript" src="app/inventory/product.js"></script>
+    <script type="text/javascript" src="app/inventory/inventoryServices.js"></script>
+    <script type="text/javascript" src="app/inventory/InventoryCtrl.js"></script>
+    <script type="text/javascript" src="app/orders/order.js"></script>
+    <script type="text/javascript" src="app/orders/orderServices.js"></script>
+    <script type="text/javascript" src="app/orders/CreateOrderCtrl.js"></script>
+    <script type="text/javascript" src="app/orders/ManageOrderController.js"></script>
+    <script type="text/javascript" src="app/labeling/LabelsController.js"></script>
+    <script type="text/javascript" src="app/labeling/labelsServices.js"></script>
+    <script type="text/javascript" src="app/reports/ReportsController.js"></script>
+    <script type="text/javascript" src="app/settings/SettingsController.js"></script>
+    <script type="text/javascript" src="app/dashboard/DashboardCtrl.js"></script>
+    <script type="text/javascript" src="app/ui/HeaderCtrl.js"></script>
+</body>
+</html>

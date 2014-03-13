@@ -1,0 +1,102 @@
+﻿<div class="page-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{"titleNewInvoice" | localize}}</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <button class="btn btn-lg btn-primary" ng-click="confirmAndPrint();">
+                    <span class="glyphicon glyphicon-print"></span> 
+                    {{"labelPrint" | localize}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>{{"labelCode" | localize}}</th>
+                    <th>{{"labelName" | localize}}</th>
+                    <th>{{"labelPrice" | localize}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in order.items">
+                    <td>{{item.code}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{price(item) | currency}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="remove(item);">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="follow-scroll">
+            <form ng-submit="addProduct();">
+                <input type="text" placeholder='{{"phCodeEnter" | localize}}' ng-model="code" />
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </form>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>{{"labelApplyDiscount" | localize}}</strong>
+                </div>
+                <div class="col-md-6">
+                    <input type="number" class="form-control" ng-model="order.discount" />
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>
+                        {{"labelSubTotal" | localize}}<br />
+                        {{"labelDiscount" | localize}}<br />
+                        {{"labelTax1" | localize}}<br />
+                        {{"labelTax2" | localize}}<br />
+                    </strong>
+                    <h3>{{"labelTotal" | localize}}</h3>
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                        <strong>
+                            {{subTotal(order) | currency}}<br />
+                            {{discount(order) | currency}}<br />
+                            {{tax1(order) | currency}}<br />
+                            {{tax2(order) | currency}}<br />
+                        </strong>
+                        <h3>{{total(order) | currency}}</h3>
+                    </div>
+                </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <select ng-model="order.paidVia">
+                        <option value="cash" selected>{{"optCash" | localize}}</option>
+                        <option value="cart">{{"optCard" | localize}}</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <input type="number" ng-model="order.paidAmount" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>{{"labelReturn" | localize}}</h3>
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                    <h3>{{returnAmount(order) | currency}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

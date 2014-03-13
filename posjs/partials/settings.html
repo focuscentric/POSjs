@@ -1,0 +1,113 @@
+﻿<div class="page-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{"titleSettingsAndConfig" | localize}}</h1>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-lg btn-primary" ng-click="save();">
+                <span class="glyphicon glyphicon-save"></span>
+                {{"buttonSave" | localize}}
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-success" ng-show="saved">
+    <p>{{"notifySaved" | localize}}</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>{{"titleStoreInfo" | localize}}</h3>
+        <p>{{"labelStoreHints" | localize}}</p>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>{{"labelItem" | localize}}</th>
+                    <th>{{"labelValue" | localize}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>{{"formLogo" | localize}}</strong></td>
+                    <td>
+                        <input type="file" ng-model="store.logo" class="form-control" /><br />
+                        {{store.logo}}
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formName" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.name" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formAddress" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.address" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formCity" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.city" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formProvince" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.province" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formPostal" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.postalCode" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formPhone" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.phone" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formNotes"}}</strong></td>
+                    <td><textarea ng-model="store.invoiceNotes" class="form-control" rows="4" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h3>{{"titleConfig"}}</h3>
+        <p>{{"labelConfigHints" | localize}}</p>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>{{"labelItem" | localize}}</th>
+                    <th>{{"labelValue" | localize}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>{{"formSecurityCode" | localize}}</strong></td>
+                    <td>
+                        <input type="text" ng-model="store.lockKey" class="form-control" placeholder="ex: 1862" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formLabelTemplate" | localize}}</strong></td>
+                    <td>
+                        <input type="file" ng-model="store.appPath" class="form-control" nwdirectory /><br />
+                        {{store.appPath}}
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formTax1Name" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.tax1Name" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formTax1Pct" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.tax1Rate" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formTax2Name" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.tax2Name" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{"formTax2Pct" | localize}}</strong></td>
+                    <td><input type="text" ng-model="store.tax2Rate" class="form-control" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#global {
+    width:100%;
+}
+.invoice {
+    padding: 0px;
+    box-shadow: none;
+}
+
+#payment-options
+{
+    display: none;
+}
+
+.non-printable
+{
+    display: none;
+}
+
+#bottom-text
+{
+    width: 500px !important;
+}

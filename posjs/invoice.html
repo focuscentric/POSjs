@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Facture {{order.number}}</title>
+    <link href="assets/css/invoice-stylish.css" rel="stylesheet" type="text/css" />
+    <!--link href="assets/css/color_summer.css" rel="stylesheet" type="text/css" / -->
+
+    <link href="assets/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+</head>
+<body ng-app="posjs.app" ng-controller="posjs.InvoiceController">
+    <div id="global">
+        <ul class="invoice">
+            <li class="vertical-separator"></li>
+            <li class="invoice-info">
+                <div class="invoice-info-container">
+                    <div class="field-title"># de facture</div>
+                    <div class="field-text">{{order.number}}</div>
+
+                    <div class="field-title">Date</div>
+                    <div class="field-text">{{order.date | date}}</div>
+
+                    <div class="field-title">Client</div>
+                    <div class="field-text">
+                        {{order.email}}    
+                    </div>
+                </div>
+            </li>
+            <li class="invoice-contact">
+                <div class="contact-container">
+                    <p><img src="{{store.logo}}" class="logo-img" alt="Logo" /></p>
+                    <div class="contact-title">{{store.name}}</div>
+<pre class="contact-text-box">
+{{store.address}}
+{{store.city}}, {{store.province}}
+{{store.postalCode}}<br />
+{{store.phone}}
+</pre>
+                </div>
+            </li>
+            <li class="clear"></li>
+            <li class="invoice-separator"></li>
+            <li>
+                <table class="invoice-table">
+                    <tr class="table-desc">
+                        <th class="desc-normal">Item</th>
+                        <th class="desc-normal">Quantité</th>
+                        <th class="desc-normal">Prix</th>
+                        <th class="desc-total">Total</th>
+                    </tr>
+                    <tr class="table-row" ng-repeat="item in order.items">
+                        <td class="col-desc">{{item.name}}</td>
+                        <td class="col-qty">1</td>
+                        <td class="col-price">{{price(item) | currency}}</td>
+                        <td class="col-total">{{price(item) | currency}}</td>
+                    </tr>
+                </table>
+                <div class="invoice-separator"></div>
+                <div class="last-row"></div>
+                <div class="invoice-amount">
+                    <table class="invoice-amount-table" cellspacing="5">
+                        <tr>
+                            <td>Sous-Total</td>
+                            <td>{{subTotal(order) | currency}}</td>
+                        </tr>
+                        <tr ng-show="order.discount > 0">
+                            <td>Rabais</td>
+                            <td>{{discount(order) | currency}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{store.tax1Name}}</td>
+                            <td>{{tax1(order) | currency}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{store.tax2Name}}</td>
+                            <td>{{tax2(order) | currency}}</td>
+                        </tr>
+                        <tr class="end-separator"><td colspan="2"></td></tr>
+                        <tr>
+                            <td class="total">Grand Total</td>
+                            <td class="total">{{total(order) | currency}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li class="invoice-separator"></li>
+            <li class="invoice-notes">
+                <div class="notes-title">NOTES</div>
+                <pre class="notes-desc">{{store.invoiceNotes}}</pre>
+            </li>
+            <li id="payment-options">
+                <a href="index.html">retour au menu principal.</a>
+            </li>
+</ul>
+    </div>
+
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var posjs = posjs || {};
+
+        setTimeout(function () { window.print(); }, 1200);
+    </script>
+
+    <script type="text/javascript" src="app.min.js"></script>
+
+    
+    <!-- <script type="text/javascript" src="data/inventory.js"></script>
+    <script type="text/javascript" src="data/orders.js"></script>
+
+    <script type="text/javascript" src="lib/angular.js"></script>
+    <script type="text/javascript" src="lib/angular-route.js"></script>
+    <script type="text/javascript" src="lib/angular-locale_fr-ca.js"></script>
+
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/inventory/product.js"></script>
+    <script type="text/javascript" src="app/orders/order.js"></script>
+    <script type="text/javascript" src="app/orders/orderServices.js"></script>
+    <script type="text/javascript" src="app/InvoiceController.js"></script>
+    -->
+</body>
+</html>
